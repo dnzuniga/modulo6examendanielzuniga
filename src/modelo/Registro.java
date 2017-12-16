@@ -385,4 +385,51 @@ public class Registro extends Conexion {
         }
         return texto;
     }
+
+    /**
+     * Método que resuelve la consulta número 4 del exámen
+     *
+     * @return retorna el total de registros existentes de los empleados dque
+     * sufrieron modificaciones de sueldo
+     *
+     */
+    public String modificaSueldos(double porcentaje) {
+        String texto = "LISTA DE MODIFICACIONES DE SUELDOS DE LOS EMPLEADOS:\n";
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_ANTERIOR\", CONCAT('$',SUELDO_BRUTO*1.1) AS \"SUELDO_MODIFICADO\", \n"
+                + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO')\n"
+                + "    WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO')\n"
+                + "     WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') END AS \"ESTADO_CIVIL\"\n"
+                + "                FROM EMPLEADOS";
+        try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            ResultSet res = pstm.executeQuery();
+            int cont = 1;
+            while (res.next()) {
+                texto += "Empleado número " + cont + ".--- ";
+                texto += "Código: " + res.getString("codigo") + " -- ";
+                texto += "RUT: " + res.getString("rut") + " - ";
+                texto += "Nombre: " + res.getString("nombre") + " -- ";
+                texto += "Apellido: " + res.getString("apellido") + " -- ";
+                texto += "Celular: " + res.getString("celular") + " -- ";
+                texto += "eMail: " + res.getString("email") + " -- ";
+                texto += "Sueldo Bruto Anterior: " + res.getString("SUELDO_ANTERIOR") + "-- ";
+                texto += "Sueldo Bruto Modificado: " + res.getString("SUELDO_MODIFICADO") + " -- ";
+                texto += "Estado Civil: " + res.getString("ESTADO_CIVIL") + "\n";
+                cont++;
+            }
+            res.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        query = "UPDATE EMPLEADOS\n"
+                + "SET SUELDO_BRUTO = SUELDO_BRUTO*(1+" + porcentaje + ")";
+        try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            ResultSet res = pstm.executeQuery();
+            res.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return texto;
+    }
 }

@@ -130,15 +130,15 @@ public class Registro extends Conexion {
      * Método para insertar un objeto Empleado a la tabla empleados
      *
      * @param codigo corresponde al campo respectivo de la tabla
+     * @param rut corresponde al campo respectivo de la tabla
      * @param nombre corresponde al campo respectivo de la tabla
-     * @param descripcion corresponde al campo respectivo de la tabla
-     * @param genero corresponde al campo respectivo de la tabla
-     * @param precioVenta corresponde al campo respectivo de la tabla
-     * @param numero corresponde al campo respectivo de la tabla
-     * @param color corresponde al campo respectivo de la tabla
-     * @param tipo corresponde al campo respectivo de la tabla
-     * @param stock corresponde al campo respectivo de la tabla
-     * @param cantidad corresponde al campo respectivo de la tabla
+     * @param apellido corresponde al campo respectivo de la tabla
+     * @param celular corresponde al campo respectivo de la tabla
+     * @param email corresponde al campo respectivo de la tabla
+     * @param sueldoBruto corresponde al campo respectivo de la tabla
+     * @param estadoCivil corresponde al campo respectivo de la tabla
+     * @param nombreDepartamento corresponde al campo respectivo de la tabla
+     *
      * @return retorna true si la inserción fué existosa
      */
     public boolean agregarEmpleado(int codigo, String rut, String nombre,
@@ -186,15 +186,14 @@ public class Registro extends Conexion {
      * Método para modificar una tupla contenida en la tabla empleados
      *
      * @param codigo corresponde al campo respectivo de la tabla
+     * @param rut corresponde al campo respectivo de la tabla
      * @param nombre corresponde al campo respectivo de la tabla
-     * @param descripcion corresponde al campo respectivo de la tabla
-     * @param genero corresponde al campo respectivo de la tabla
-     * @param precioVenta corresponde al campo respectivo de la tabla
-     * @param numero corresponde al campo respectivo de la tabla
-     * @param color corresponde al campo respectivo de la tabla
-     * @param tipo corresponde al campo respectivo de la tabla
-     * @param stock corresponde al campo respectivo de la tabla
-     * @param cantidad corresponde al campo respectivo de la tabla
+     * @param apellido corresponde al campo respectivo de la tabla
+     * @param celular corresponde al campo respectivo de la tabla
+     * @param email corresponde al campo respectivo de la tabla
+     * @param sueldoBruto corresponde al campo respectivo de la tabla
+     * @param estadoCivil corresponde al campo respectivo de la tabla
+     * @param nombreDepartamento corresponde al campo respectivo de la tabla
      * @return retorna true si la modificación fué exitosa
      */
     public boolean modificarEmpleado(int codigo, String rut, String nombre,
@@ -342,6 +341,8 @@ public class Registro extends Conexion {
     /**
      * Método que resuelve la consulta número 3 del exámen
      *
+     * @param sueldoBruto corresponde a atributo correspondiente de la clase
+     * Empleado
      * @return retorna el detalle de los empleados eliminados
      *
      */
@@ -388,6 +389,8 @@ public class Registro extends Conexion {
     /**
      * Método que resuelve la consulta número 4 del exámen
      *
+     * @param porcentaje corresponde al porcentaje de incremento del sueldo
+     * bruto de los Empleados
      * @return retorna el total de registros existentes de los empleados dque
      * sufrieron modificaciones de sueldo
      *

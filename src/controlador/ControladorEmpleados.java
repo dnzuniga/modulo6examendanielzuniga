@@ -252,7 +252,12 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
 //        3 del exámen 
         this.vistaPrincipal.mnuConsultasConsulta3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                JOptionPane.showMessageDialog(null, registro.eliminaEmpleadosPorSueldo(120000));
+                String texto = registro.eliminaEmpleadosPorSueldo(120000);
+                if (texto.equalsIgnoreCase("LISTA DE EMPLEADOS ELIMINADOS:\n")) {
+                    JOptionPane.showMessageDialog(null, "No se encontraron empleados con Sueldo Bruto de $120.000");
+                } else {
+                    JOptionPane.showMessageDialog(null, texto);
+                }
             }
         });
 
@@ -305,6 +310,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
      * @param e corresponde al objeto relacionado con el evento ocurrido
      */
     @Override
+
     public void actionPerformed(ActionEvent e) {
         /*maneja que botón se precionó*/
         switch (e.getActionCommand()) {

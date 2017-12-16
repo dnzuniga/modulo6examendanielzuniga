@@ -20,10 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Registro extends Conexion {
 
-    /*Declara las constantes correspondientes a los nombres de las tablas y 
-    base de datos*/
-    public final String dataBase = "Empleado";
-    public final String Empleado = "modulo6examendanielzuniga.empleados";
 
     /*devuelve el color según el char de que se trate*/
     public String TransformaEstadoCivil(String estadoCivil) {
@@ -314,7 +310,7 @@ public class Registro extends Conexion {
      */
     public String empleadosRedes() {
         String texto = "LISTA DE EMPLEADOS DEL DEPARTAMENTO DE REDES:\n";
-        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_sBRUTO\", \n"
                 + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
                 + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
                 + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"
@@ -353,7 +349,10 @@ public class Registro extends Conexion {
     public String eliminaEmpleadosPorSueldo(int sueldoBruto) {
         String texto = "LISTA DE EMPLEADOS ELIMINADOS:\n";
         String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
-                + "EST_CIVIL AS \"ESTADO_CIVIL\"\n"
+                + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
+                + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
+                + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"
+                + "END AS \"ESTADO_CIVIL\"\n"
                 + "FROM EMPLEADOS\n"
                 + "WHERE SUELDO_BRUTO=" + sueldoBruto + " ";
         try {

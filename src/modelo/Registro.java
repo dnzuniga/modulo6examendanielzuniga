@@ -308,7 +308,7 @@ public class Registro extends Conexion {
      */
     public String empleadosRedes() {
         String texto = "LISTA DE EMPLEADOS DEL DEPARTAMENTO DE REDES:\n";
-        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_sBRUTO\", \n"
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
                 + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
                 + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
                 + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"

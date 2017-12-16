@@ -16,12 +16,11 @@ import javax.swing.table.DefaultTableModel;
  * Clase que contiene los métodos propios necesarios para leer y poblar la base
  * de datos
  *
- * @author daniel Zúñiga Correa, 2017-12-07 (yyyy-mm-dd)
+ * @author daniel Zúñiga Correa, 2017-12-15 (yyyy-mm-dd)
  */
 public class Registro extends Conexion {
 
-
-    /*devuelve el color según el char de que se trate*/
+//    devuelve el estado civil según el char de que se trate
     public String TransformaEstadoCivil(String estadoCivil) {
         String estadoTmp = "";
         switch (estadoCivil) {
@@ -40,7 +39,7 @@ public class Registro extends Conexion {
 
     /**
      * Método para obtener la cantidad de registros que contiene la tabla
-     * películas, y que fué necesario programar por separado del método
+     * empleados, y que fué necesario programar por separado del método
      * obtenerPeliculas para evitar un error por existir demasiadas conexiones a
      * la base de datos
      *
@@ -145,10 +144,10 @@ public class Registro extends Conexion {
     public boolean agregarEmpleado(int codigo, String rut, String nombre,
             String apellido, int celular, String email, int sueldoBruto,
             String estadoCivil, String nombreDepartamento) {
-        /*objetos temporales necesarios para la ejecución del método*/
+//        objetos temporales necesarios para la ejecución del método
         Empleado empleadosTemp = new Empleado();
-        /*verifica que no pre exista una tupla con el mismo código, para no
-        vulnerar la primera forma normal*/
+//        verifica que no pre exista una tupla con el mismo código, para no
+//        vulnerar la primera forma normal
         if (!empleadoExiste(codigo)) {
             if (empleadosTemp.setCodigo(codigo)
                     && empleadosTemp.setRut(rut)
@@ -232,7 +231,7 @@ public class Registro extends Conexion {
     }
 
     /**
-     * Método para verificar la existencia del producto en la tabla respectiva
+     * Método para verificar la existencia de un empleado en la tabla respectiva
      * de la base de datos
      *
      * @param codigo corresponde al campo respectivo de la tabla

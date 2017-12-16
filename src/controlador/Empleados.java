@@ -17,7 +17,7 @@ public class Empleados {
      *
      * @author Daniel Zúñiga Correa
      *
-     * @param args corrsponde a los argumenos propios de este método
+     * @param args corresponde a los argumenos propios de este método
      */
     public static void main(String[] args) {
 

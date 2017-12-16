@@ -31,14 +31,12 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     public MenuBuscar vistaBuscar = new MenuBuscar();
     public MenuDatos vistaDatos = new MenuDatos();
     public MenuMostrar vistaMostrar = new MenuMostrar();
-    
     public MenuBotonAgregar vistaBotonAgregar = new MenuBotonAgregar();
     public MenuBotonBuscarEliminar vistaBotonBuscarEliminar = new MenuBotonBuscarEliminar();
     public MenuBotonBuscarModificar vistaBotonBuscarModificar = new MenuBotonBuscarModificar();
     public MenuBotonEliminar vistaBotonEliminar = new MenuBotonEliminar();
     public MenuBotonMostrar vistaBotonMostrar = new MenuBotonMostrar();
     public MenuBotonModificar vistaBotonModificar = new MenuBotonModificar();
-    
     public MenuTituloAgregar vistaTituloAgregar = new MenuTituloAgregar();
     public MenuTituloEliminar vistaTituloEliminar = new MenuTituloEliminar();
     public MenuTituloMostrar vistaTituloMostrar = new MenuTituloMostrar();
@@ -62,150 +60,152 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
         vistaPrincipal.panelDatos.setVisible(true);
         vistaPrincipal.panelTitulo.setVisible(true);
         vistaPrincipal.panelBoton.setVisible(true);
-        
+
+//        controla la opción del menú que termina el programa
         this.vistaPrincipal.mnuArchivoSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 System.exit(1);
             }
         });
+//        controla la opcion del menú que desplega la vista para agregar empleados
         this.vistaPrincipal.mnuOpcionesAgregar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                //despliega vista agregar
                 ocultarVistas();
                 limpiarDatos();//limpia los campos de la vista
                 habilitarDatos();//habilita la edición de datos
 
                 vistaPrincipal.setSize(580, 480);
-                
+
                 vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(540, 40));
                 vistaPrincipal.panelTitulo.revalidate();
                 vistaPrincipal.panelTitulo.repaint();
                 vistaPrincipal.panelTitulo.add(vistaTituloAgregar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelDatos.setPreferredSize(new Dimension(430, 270));
                 vistaPrincipal.panelDatos.revalidate();
                 vistaPrincipal.panelDatos.repaint();
                 vistaPrincipal.panelDatos.add(vistaDatos, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelBoton.setPreferredSize(new Dimension(110, 270));
                 vistaPrincipal.panelBoton.revalidate();
                 vistaPrincipal.panelBoton.repaint();
                 vistaPrincipal.panelBoton.add(vistaBotonAgregar, BorderLayout.CENTER);
-                
+
                 vistaTituloAgregar.setSize(530, 30);
                 vistaDatos.setSize(430, 270);
                 vistaBotonAgregar.setSize(110, 270);
-                
+
                 vistaTituloAgregar.setVisible(true);
                 vistaDatos.setVisible(true);
                 vistaBotonAgregar.setVisible(true);
             }
         });
+//      controla la vista para comenzar la eliminación de empleados
         this.vistaPrincipal.mnuOpcionesEliminar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                //despliega vista buscar para eliminar
                 ocultarVistas();
                 vistaBuscar.txtCodigo.setText("0");
-                
+
                 vistaPrincipal.setSize(580, 300);
-                
+
                 vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(540, 40));
                 vistaPrincipal.panelTitulo.revalidate();
                 vistaPrincipal.panelTitulo.repaint();
                 vistaPrincipal.panelTitulo.add(vistaTituloEliminar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelDatos.setPreferredSize(new Dimension(430, 90));
                 vistaPrincipal.panelDatos.revalidate();
                 vistaPrincipal.panelDatos.repaint();
                 vistaPrincipal.panelDatos.add(vistaBuscar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelBoton.setPreferredSize(new Dimension(110, 90));
                 vistaPrincipal.panelBoton.revalidate();
                 vistaPrincipal.panelBoton.repaint();
                 vistaPrincipal.panelBoton.add(vistaBotonBuscarEliminar, BorderLayout.CENTER);
-                
+
                 vistaTituloEliminar.setSize(530, 30);
                 vistaBuscar.setSize(430, 80);
                 vistaBotonBuscarEliminar.setSize(110, 80);
-                
+
                 vistaTituloEliminar.setVisible(true);
                 vistaBuscar.setVisible(true);
                 vistaBotonBuscarEliminar.setVisible(true);
             }
         });
+//        controla la vista para comenzar la modificacion de empleados
         this.vistaPrincipal.mnuOpcionesModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                //desliega vista buscar para modificar
                 ocultarVistas();
                 vistaBuscar.txtCodigo.setText("0");
-                
+
                 vistaPrincipal.setSize(580, 300);
-                
+
                 vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(540, 40));
                 vistaPrincipal.panelTitulo.revalidate();
                 vistaPrincipal.panelTitulo.repaint();
                 vistaPrincipal.panelTitulo.add(vistaTituloModificar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelDatos.setPreferredSize(new Dimension(430, 90));
                 vistaPrincipal.panelDatos.revalidate();
                 vistaPrincipal.panelDatos.repaint();
                 vistaPrincipal.panelDatos.add(vistaBuscar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelBoton.setPreferredSize(new Dimension(110, 90));
                 vistaPrincipal.panelBoton.revalidate();
                 vistaPrincipal.panelBoton.repaint();
                 vistaPrincipal.panelBoton.add(vistaBotonBuscarModificar, BorderLayout.CENTER);
-                
+
                 vistaTituloModificar.setSize(530, 30);
                 vistaBuscar.setSize(430, 80);
                 vistaBotonBuscarModificar.setSize(110, 80);
-                
+
                 vistaTituloModificar.setVisible(true);
                 vistaBuscar.setVisible(true);
                 vistaBotonBuscarModificar.setVisible(true);
             }
         });
+//        controla la vista para mostrar listados de empleados
         this.vistaPrincipal.mnuOpcionesMostrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 if (registro.cantidadEmpleados() > 0) {
                     //despliega vista listar
                     ocultarVistas();
                     limpiarMostrar();
-                    
+
                     vistaPrincipal.setSize(580, 600);
-                    
+
                     vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(540, 40));
                     vistaPrincipal.panelTitulo.revalidate();
                     vistaPrincipal.panelTitulo.repaint();
                     vistaPrincipal.panelTitulo.add(vistaTituloMostrar, BorderLayout.CENTER);
-                    
+
                     vistaPrincipal.panelDatos.setPreferredSize(new Dimension(430, 465));
                     vistaPrincipal.panelDatos.revalidate();
                     vistaPrincipal.panelDatos.repaint();
                     vistaPrincipal.panelDatos.add(vistaMostrar, BorderLayout.CENTER);
-                    
+
                     vistaPrincipal.panelBoton.setPreferredSize(new Dimension(110, 465));
                     vistaPrincipal.panelBoton.revalidate();
                     vistaPrincipal.panelBoton.repaint();
                     vistaPrincipal.panelBoton.add(vistaBotonMostrar, BorderLayout.CENTER);
-                    
+
                     vistaTituloMostrar.setSize(530, 30);
                     vistaMostrar.setSize(440, 455);
                     vistaBotonMostrar.setSize(110, 455);
                     vistaMostrar.tbMostrar.setModel(registro.mostrarEmpleados());
                     agregarMostrar();
-                    
+
                     vistaTituloMostrar.setVisible(true);
                     vistaMostrar.setVisible(true);
                     vistaBotonMostrar.setVisible(true);
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "No se han ingresado"
                             + " empleados al registro");
                 }
             }
         });
-        //        se implementa esta opción del menú para cumplir con la consulta número
+//        se implementa esta opción del menú para cumplir con la Consulta número
 //        1 del exámen 
         this.vistaPrincipal.mnuConsultasConsulta1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -214,30 +214,30 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 habilitarDatos();//habilita la edición de datos
 
                 vistaPrincipal.setSize(580, 480);
-                
+
                 vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(540, 40));
                 vistaPrincipal.panelTitulo.revalidate();
                 vistaPrincipal.panelTitulo.repaint();
                 vistaPrincipal.panelTitulo.add(vistaTituloAgregar, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelDatos.setPreferredSize(new Dimension(430, 270));
                 vistaPrincipal.panelDatos.revalidate();
                 vistaPrincipal.panelDatos.repaint();
                 vistaPrincipal.panelDatos.add(vistaDatos, BorderLayout.CENTER);
-                
+
                 vistaPrincipal.panelBoton.setPreferredSize(new Dimension(110, 270));
                 vistaPrincipal.panelBoton.revalidate();
                 vistaPrincipal.panelBoton.repaint();
                 vistaPrincipal.panelBoton.add(vistaBotonAgregar, BorderLayout.CENTER);
-                
+
                 vistaTituloAgregar.setSize(530, 30);
                 vistaDatos.setSize(430, 270);
                 vistaBotonAgregar.setSize(110, 270);
-                
+
                 vistaTituloAgregar.setVisible(true);
                 vistaDatos.setVisible(true);
                 vistaBotonAgregar.setVisible(true);
-                
+
                 vistaDatos.txtCodigo.grabFocus();
             }
         });
@@ -271,8 +271,9 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
 //        implementa Listener para botones en vista agregar
         this.vistaBotonAgregar.btnAgregar.setActionCommand("btnAgregar");
         this.vistaBotonAgregar.btnAgregar.addActionListener(this);
-        //se ingresa nuevo botón "Limpiar" como requisito de la consulta
-        //número 1 del exámen
+
+//        se ingresa nuevo botón "Limpiar" como requisito de la consulta
+//        número 1 del exámen
         this.vistaBotonAgregar.btnLimpiarAgregar.setActionCommand("btnLimpiarAgregar");
         this.vistaBotonAgregar.btnLimpiarAgregar.addActionListener(this);
 
@@ -307,7 +308,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
         //número 1 del exámen
         this.vistaBotonModificar.btnLimpiarModificar.setActionCommand("btnLimpiarModificar");
         this.vistaBotonModificar.btnLimpiarModificar.addActionListener(this);
-        
+
     }
 
     /**
@@ -317,19 +318,19 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
      * @param e corresponde al objeto relacionado con el evento ocurrido
      */
     @Override
-    
+
     public void actionPerformed(ActionEvent e) {
-        /*maneja que botón se precionó*/
+//      implementa el código que se ejecuta con motivo de la presión de un botón 
         switch (e.getActionCommand()) {
             case "btnAgregar":
                 if (validaNumerosDatos()) {
-                    /*verifica la regla de negocio correspondiente a que el 
-                    código del producto a ingresar no exista*/
+//                    verifica la regla de negocio correspondiente a que el 
+//                    código del producto a ingresar no exista previamente
                     if (!registro.empleadoExiste(
                             Integer.parseInt(vistaDatos.txtCodigo.getText()))) {
 //                        verifica que los datos a ingresar cumplan con las 
-//                        reglas de negocio de cada uno de ellos, y de ser así la
-//                        ingresa a la base de datos
+//                        reglas de negocio de cada uno de ellos, y de ser así
+//                        crea un nuevo registro en la base de datos
                         if (registro.agregarEmpleado(
                                 Integer.parseInt(vistaDatos.txtCodigo.getText()),
                                 vistaDatos.txtRut.getText(),
@@ -340,15 +341,16 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                                 Integer.parseInt(vistaDatos.txtSueldoBruto.getText()),
                                 obtieneEstadoCivil(vistaDatos.cboEstadoCivil.getSelectedIndex()),
                                 vistaDatos.cboNombreDepartamento.getSelectedItem().toString())) {
-                            JOptionPane.showMessageDialog(null, "Empleado Agregado correctamente.\n");
+                            JOptionPane.showMessageDialog(null, "Empleado agregado correctamente.\n");
                             limpiarDatos();
                         } else {
+//                            informa que el ingreso de datos vulnera la o las reglas de negocio
                             mensajeReglasNegocio();
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Ya existe un Empleado con el código "
                                 + vistaDatos.txtCodigo.getText() + "\n"
-                                + "y en consecuencia no se ingreso el Empleado al registro.\n");
+                                + "y en consecuencia no se agregó al registro.\n");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en el ingreso "
@@ -363,49 +365,45 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 vistaDatos.txtCodigo.grabFocus();
                 break;
             case "btnBuscarEliminar":
-                /*verifica que el código que se desea buscar sea convertible 
-                a número*/
+//                se verifica que el código que se desea buscar sea convertible 
+//                a número
                 if (esEntero(vistaBuscar.txtCodigo.getText())) {
-                    /*verifica que el producto a eliminar exista en la base de 
-                    datos*/
+//                    verifica que el producto a eliminar exista en la base de 
+//                    datos
                     if (registro.empleadoExiste(
                             Integer.parseInt(vistaBuscar.txtCodigo.getText()))) {
-                        
                         ocultarVistas();
                         limpiarDatos();
-                        
-                        vistaPrincipal.setSize(550, 460);
-                        
+                        vistaPrincipal.setSize(580, 480);
                         vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(520, 40));
                         vistaPrincipal.panelTitulo.revalidate();
                         vistaPrincipal.panelTitulo.repaint();
                         vistaPrincipal.panelTitulo.add(vistaTituloEliminar, BorderLayout.CENTER);
-                        
                         vistaPrincipal.panelDatos.setPreferredSize(new Dimension(400, 270));
                         vistaPrincipal.panelDatos.revalidate();
                         vistaPrincipal.panelDatos.repaint();
                         vistaPrincipal.panelDatos.add(vistaDatos, BorderLayout.CENTER);
-                        
+
                         vistaPrincipal.panelBoton.setPreferredSize(new Dimension(100, 270));
                         vistaPrincipal.panelBoton.revalidate();
                         vistaPrincipal.panelBoton.repaint();
                         vistaPrincipal.panelBoton.add(vistaBotonEliminar, BorderLayout.CENTER);
-                        
+
                         vistaTituloEliminar.setSize(510, 30);
                         vistaDatos.setSize(400, 270);
                         vistaBotonEliminar.setSize(100, 270);
 
-                        /*inhabilita la edición de datos*/
+//                        inhabilita la edición de datos
                         inhabilitarDatos();
-                        /*llena los campos correspondientes de la vista 
-                        eliminar, con los datos correspondientes al producto
-                        a modificar*/
+//                        llena los campos correspondientes de la vista 
+//                        eliminar, con los datos correspondientes al producto
+//                        a modificar
                         agregarDatos(Integer.parseInt(vistaBuscar.txtCodigo.getText()));
-                        
+
                         vistaTituloEliminar.setVisible(true);
                         vistaDatos.setVisible(true);
                         vistaBotonEliminar.setVisible(true);
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(null, "El Empleado código "
                                 + vistaBuscar.txtCodigo.getText() + " no existe en el registro.\n");
@@ -413,33 +411,33 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 }
                 break;
             case "btnBuscarModificar":
-                /*verifica que el código que se desea buscar sea convertible 
-                a número*/
+//                verifica que el código que se desea buscar sea convertible 
+//                a número
                 if (esEntero(vistaBuscar.txtCodigo.getText())) {
-                    /*verifica que el producto a eliminar exista en la base de 
-                    datos*/
+//                    verifica que el producto a eliminar exista en la base de 
+//                    datos
                     if (registro.empleadoExiste(
                             Integer.parseInt(vistaBuscar.txtCodigo.getText()))) {
                         ocultarVistas();
                         limpiarDatos();
-                        
-                        vistaPrincipal.setSize(550, 460);
-                        
+
+                        vistaPrincipal.setSize(580, 480);
+
                         vistaPrincipal.panelTitulo.setPreferredSize(new Dimension(520, 40));
                         vistaPrincipal.panelTitulo.revalidate();
                         vistaPrincipal.panelTitulo.repaint();
                         vistaPrincipal.panelTitulo.add(vistaTituloModificar, BorderLayout.CENTER);
-                        
+
                         vistaPrincipal.panelDatos.setPreferredSize(new Dimension(400, 270));
                         vistaPrincipal.panelDatos.revalidate();
                         vistaPrincipal.panelDatos.repaint();
                         vistaPrincipal.panelDatos.add(vistaDatos, BorderLayout.CENTER);
-                        
+
                         vistaPrincipal.panelBoton.setPreferredSize(new Dimension(100, 270));
                         vistaPrincipal.panelBoton.revalidate();
                         vistaPrincipal.panelBoton.repaint();
                         vistaPrincipal.panelBoton.add(vistaBotonModificar, BorderLayout.CENTER);
-                        
+
                         vistaTituloModificar.setSize(510, 30);
                         vistaDatos.setSize(400, 270);
                         vistaBotonModificar.setSize(100, 270);
@@ -451,11 +449,11 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
 //                        eliminar, con los datos correspondientes al producto
 //                        a modificar
                         agregarDatos(Integer.parseInt(vistaBuscar.txtCodigo.getText()));
-                        
+
                         vistaTituloModificar.setVisible(true);
                         vistaDatos.setVisible(true);
                         vistaBotonModificar.setVisible(true);
-                        
+
                     } else {
                         JOptionPane.showMessageDialog(null, "El Empleado código "
                                 + vistaBuscar.txtCodigo.getText() + " no existe en el registro.\n");
@@ -469,11 +467,11 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 vistaDatos.txtRut.grabFocus();
                 break;
             case "btnEliminar":
-                /*dada la importancia de la eliminación, solicita 
-                        verificación previa*/
+//                dada la importancia de eliminar datos, se solicita verificación
+//                previa
                 if (pideConfirmacion("ESTA ACCION ELIMINARA"
                         + " PERMANENTEMENTE AL EMPLEADO DEL REGISTRO") == JOptionPane.YES_OPTION) {
-                    /*elimina el producto de la base de datos y lo verifica*/
+//                    elimina y verifica que el producto sea eliminado de la base de datos
                     if (registro.eliminarEmpleado(
                             Integer.parseInt(vistaDatos.txtCodigo.getText()))) {
                         JOptionPane.showMessageDialog(null, "El Empleado "
@@ -488,12 +486,12 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 break;
 //            botón contenido en la vista modificar
             case "btnModificarModificar":
-                /*verifica que no se ingresen datos no numericos en los 
-                    campos respectivos*/
+//                verifica que no se ingresen datos no numericos en los 
+//                    campos respectivos
                 if (validaNumerosDatos()) {
-                    /*verifica que los datos a ingresar cumplan con las 
-                        reglas de negocio de cada uno de ellos, y de ser así la
-                        ingresa a la base de datos*/
+//                    verifica que los datos a ingresar cumplan con las 
+//                        reglas de negocio de cada uno de ellos, y de ser así los
+//                        ingresa a la base de datos
                     if (registro.modificarEmpleado(
                             Integer.parseInt(vistaDatos.txtCodigo.getText()),
                             vistaDatos.txtRut.getText(),
@@ -508,7 +506,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                     } else {
                         mensajeReglasNegocio();
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en el ingreso "
                             + "de números\n Debe ingresar solo números en los"
@@ -535,13 +533,13 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 limpiarMostrar();
                 vistaMostrar.txtRut.grabFocus();
                 break;
-            /*botón para modificar el contenido de la vista mostrar*/
+//           botón para modificar el contenido de la vista mostrar
             case "btnModificarMostrar":
-                /*verifica que no se ingresen datos no numericos en los 
-                    campos respectivos*/
+//                verifica que no se ingresen datos no numéricos en los 
+//                    campos respectivos
                 if (validaNumerosMostrar()) {
 //                    verifica que los datos a ingresar cumplan con las 
-//                        reglas de negocio de cada uno de ellos, y de ser así la
+//                        reglas de negocio de cada uno de ellos, y de ser así los
 //                        ingresa a la base de datos
                     if (registro.modificarEmpleado(
                             Integer.parseInt(vistaMostrar.txtCodigo.getText()),
@@ -558,7 +556,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                     } else {
                         mensajeReglasNegocio();
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Error en el ingreso "
                             + "de números\n Debe ingresar solo números en los"
@@ -613,7 +611,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e
     ) {
-        
+
     }
 
     /**
@@ -625,7 +623,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     @Override
     public void mouseReleased(MouseEvent e
     ) {
-        
+
     }
 
     /**
@@ -637,7 +635,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     @Override
     public void mouseEntered(MouseEvent e
     ) {
-        
+
     }
 
     /**
@@ -649,7 +647,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e
     ) {
-        
+
     }
 
     /**
@@ -668,7 +666,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     }
 
     /**
-     * Método para limpiar la vista listar
+     * Método para limpiar la vista mostrar
      */
     private void limpiarMostrar() {
         vistaMostrar.txtRut.setText("");
@@ -697,7 +695,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
 
     /**
      * Método para reemplazar los valores en los campos de la vista datos, por
-     * los correspondientes al empleado que se desea modificar
+     * los correspondientes al registro del empleado que se desea modificar
      *
      * @param codigo corresponde al código del empleado
      */
@@ -774,21 +772,19 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     /**
      * Método para ocultar todas las vistas
      *
-     * @return devuelve true si todos los campos contienen strings
-     * transformables a enteros
      */
     private void ocultarVistas() {
         vistaBuscar.setVisible(false);
         vistaDatos.setVisible(false);
         vistaMostrar.setVisible(false);
-        
+
         vistaBotonAgregar.setVisible(false);
         vistaBotonBuscarEliminar.setVisible(false);
         vistaBotonBuscarModificar.setVisible(false);
         vistaBotonEliminar.setVisible(false);
         vistaBotonMostrar.setVisible(false);
         vistaBotonModificar.setVisible(false);
-        
+
         vistaTituloAgregar.setVisible(false);
         vistaTituloEliminar.setVisible(false);
         vistaTituloMostrar.setVisible(false);
@@ -804,7 +800,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
      */
     private int pideConfirmacion(String mensaje) {
         return JOptionPane.showConfirmDialog(null, mensaje + "\n",
-                "¿?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                "SE REQUIERE CONFIRMACION", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -823,7 +819,8 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     }
 
     /**
-     * Método para validar la entrada de numeros enteros en la vista agregar
+     * Método para validar la entrada de numeros enteros en las vistas agregar y
+     * modificar
      *
      * @return devuelve true si todos los campos contienen strings
      * transformables a enteros
@@ -839,7 +836,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
     }
 
     /**
-     * Método para validar la entrada de numeros enteros en la vista listar
+     * Método para validar la entrada de numeros enteros en la vista mostrar
      *
      * @return devuelve true si todos los campos contienen strings
      * transformables a enteros

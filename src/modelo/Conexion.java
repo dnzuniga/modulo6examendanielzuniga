@@ -6,25 +6,29 @@
  */
 package modelo;
 
-/*importación de las librerías correspondientes*/
+//importación de las librerías correspondientes
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
  * Clase que contiene el método necesario para conectar el programa a la base de
- * datos respectiva
+ * datos respectiva.
  *
- * @author daniel Zúñiga Correa, 2017-12-07 (yyyy-mm-dd)
+ * @author daniel Zúñiga Correa, 2017-12-15 (yyyy-mm-dd)
  */
 public class Conexion {
+
+    final static String url = "localhost";
+    final static String usuario = "modulo6examendanielzuniga";
+    final static String contrasena = "modulo6examendanielzuniga";
 
     public static Connection getConexion() {
         Connection connection = null;
         try {
             String driverClassName = "oracle.jdbc.driver.OracleDriver";
-            String driverUrl = "jdbc:oracle:thin:@" + "localhost" + ":" + "1521" + ":XE";
+            String driverUrl = "jdbc:oracle:thin:@" + url + ":" + "1521" + ":XE";
             Class.forName(driverClassName);
-            connection = DriverManager.getConnection(driverUrl, "modulo6examendanielzuniga", "modulo6examendanielzuniga");
+            connection = DriverManager.getConnection(driverUrl, usuario, contrasena);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Resuelve el Examen del módulo 6 "Profundización Desarrollo de Software",
+ * Programa CORFO "Mil Programadores".
+ *
+ * @autor Daniel Zúñiga Correa, y Felipe García 2017-12-15 (yyyy-mm-dd)
  */
 package vista;
 
 /**
  *
- * @author Daniel
+ * @author daniel Zúñiga Correa, 2017-12-15 (yyyy-mm-dd)
  */
 public class MenuTituloMostrar extends javax.swing.JPanel {
 

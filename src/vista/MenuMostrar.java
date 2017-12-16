@@ -1,19 +1,19 @@
 /**
- * Resuelve la guía 1.17 del módulo 6 "Profundización Desarrollo de Software",
+ * Resuelve el Examen del módulo 6 "Profundización Desarrollo de Software",
  * Programa CORFO "Mil Programadores".
  *
- * @autor Daniel Zúñiga Correa, 2017-12-11 (yyyy-mm-dd)
+ * @autor Daniel Zúñiga Correa, y Felipe García 2017-12-15 (yyyy-mm-dd)
  */
 package vista;
 
 /**
  * Clase correspondiente a la vista listar
- *
+ * @author daniel Zúñiga Correa, 2017-12-15 (yyyy-mm-dd)
  */
 public class MenuMostrar extends javax.swing.JPanel {
 
     /**
-     * Creates new form MenuAgregar2
+     * Creates new form MenuAgregar
      */
     public MenuMostrar() {
         initComponents();

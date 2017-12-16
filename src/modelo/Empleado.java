@@ -7,11 +7,13 @@
 package modelo;
 
 /**
+ * Contienen la clase Empleado
  *
- * @author dnzun
+ * @author daniel Zúñiga Correa, 2017-12-15 (yyyy-mm-dd)
  */
 public class Empleado {
 
+//    atributos de clase
     private int codigo;
     private String rut;
     private String nombre;
@@ -22,9 +24,11 @@ public class Empleado {
     private String estadoCivil;
     private String nombreDepartamento;
 
+//    constructor sin parámetros
     public Empleado() {
     }
 
+//    constructor con parámetros
     public Empleado(int codigo, String rut, String nombre, String apellido, int celular, String email, int sueldoBruto, String estadoCivil, String nombreDepartamento) {
         setCodigo(codigo);
         setRut(rut);
@@ -37,7 +41,7 @@ public class Empleado {
         setNombreDepartamento(nombreDepartamento);
     }
 
-//    Mutadores y accesadores
+//    Mutadores y accesadores que contienen las reglas de negocio
     public int getCodigo() {
         return codigo;
     }
@@ -82,7 +86,7 @@ public class Empleado {
     }
 
     public boolean setApellido(String apellido) {
-        if (!apellido.equalsIgnoreCase(" ") &&  apellido.length() > 0) {
+        if (!apellido.equalsIgnoreCase(" ") && apellido.length() > 0) {
             this.apellido = apellido;
             return true;
         } else {

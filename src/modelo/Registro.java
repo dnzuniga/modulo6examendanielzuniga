@@ -163,7 +163,7 @@ public class Registro extends Conexion {
                     && empleadosTemp.setSueldoBruto(sueldoBruto)
                     && empleadosTemp.setEstadoCivil(estadoCivil)
                     && empleadosTemp.setNombreDepartamento(nombreDepartamento)) {
-                String query = " INSERT INTO Empleados " + "(codigo,rut,"
+                String query = " INSERT INTO Empleados (codigo,rut,"
                         + "nombre, apellido, celular, email, sueldo_bruto, est_civil,"
                         + "nom_depto) "
                         + "VALUES ( '" + codigo + "','" + rut + "', '" + nombre
@@ -215,7 +215,7 @@ public class Registro extends Conexion {
                 && empleadosTemp.setSueldoBruto(sueldoBruto)
                 && empleadosTemp.setEstadoCivil(estadoCivil)
                 && empleadosTemp.setNombreDepartamento(nombreDepartamento)) {
-            String query = "UPDATE Empleados " + "SET rut='" + rut
+            String query = "UPDATE Empleados SET rut='" + rut
                     + "', nombre='" + nombre + "', apellido='" + apellido
                     + "' , celular='" + celular + "', email='" + email
                     + "' , sueldo_bruto='" + sueldoBruto + "', est_civil='" + estadoCivil
@@ -291,7 +291,7 @@ public class Registro extends Conexion {
         boolean resultado = false;
         /*verifica si existe un registro con el código ingresado*/
         if (empleadoExiste(codigo)) {
-            String query = " DELETE FROM Empleados " + "WHERE codigo=" + codigo + " ";
+            String query = " DELETE FROM Empleados WHERE codigo=" + codigo + " ";
             try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(query);
                 pstm.execute();
@@ -303,5 +303,44 @@ public class Registro extends Conexion {
 
         }
         return resultado;
+    }
+
+    /**
+     * Método que resuelve la consulta número 2 del exámen
+     *
+     * @return retorna el total de registros existentes de los empleados del
+     * departamento de "Redes"
+     *
+     */
+    public String empleadosRedes() {
+        String texto = "LISTA DE EMPLEADOS DEL DEPARTAMENTO DE REDES:\n";
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
+                + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
+                + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
+                + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"
+                + "END AS \"ESTADO_CIVIL\"\n"
+                + "FROM EMPLEADOS\n"
+                + "WHERE NOM_DEPTO='Redes'";
+        try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            ResultSet res = pstm.executeQuery();
+            int cont = 1;
+            while (res.next()) {
+                texto += "Empleado número " + cont + ".--- ";
+                texto += "Código: " + res.getString("codigo") + " -- ";
+                texto += "RUT: " + res.getString("rut") + " - ";
+                texto += "Nombre: " + res.getString("nombre") + " -- ";
+                texto += "Apellido: " + res.getString("apellido") + " -- ";
+                texto += "Celular: " + res.getString("celular") + " -- ";
+                texto += "eMail: " + res.getString("email") + " -- ";
+                texto += "Sueldo Bruto: " + res.getString("SUELDO_BRUTO") + " -- ";
+                texto += "Estado Civil: " + res.getString("ESTADO_CIVIL") + "\n";
+                cont++;
+            }
+            res.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return texto;
     }
 }

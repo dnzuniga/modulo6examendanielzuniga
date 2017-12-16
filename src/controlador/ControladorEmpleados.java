@@ -241,6 +241,11 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 vistaDatos.txtCodigo.grabFocus();
             }
         });
+        this.vistaPrincipal.mnuConsultasConsulta2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                JOptionPane.showMessageDialog(null, registro.empleadosRedes());
+            }
+        });
 
 //        implementa Listener para botones en vista agregar
         this.vistaBotonAgregar.btnAgregar.setActionCommand("btnAgregar");
@@ -316,11 +321,10 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                             JOptionPane.showMessageDialog(null, "Empleado Agregado correctamente.\n");
                             limpiarDatos();
                         } else {
-                            JOptionPane.showMessageDialog(null, "No se agregó "
-                                    + "al Empleado por error las reglas de negocio");
+                            mensajeReglasNegocio();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Ya existe un Empleado con el código"
+                        JOptionPane.showMessageDialog(null, "Ya existe un Empleado con el código "
                                 + vistaDatos.txtCodigo.getText() + "\n"
                                 + "y en consecuencia no se ingreso el Empleado al registro.\n");
                     }
@@ -480,8 +484,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                             vistaDatos.cboNombreDepartamento.getSelectedItem().toString())) {
                         JOptionPane.showMessageDialog(null, "Empleado modificado correctamente.\n");
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se modificó "
-                                + "al Empleado por error las reglas de negocio");
+                        mensajeReglasNegocio();
                     }
 
                 } else {
@@ -531,8 +534,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                         JOptionPane.showMessageDialog(null, "Empleado modificado correctamente.\n");
                         this.vistaMostrar.tbMostrar.setModel(registro.mostrarEmpleados());
                     } else {
-                        JOptionPane.showMessageDialog(null, "No se modificó "
-                                + "al Empleado por error las reglas de negocio");
+                        mensajeReglasNegocio();
                     }
 
                 } else {
@@ -872,4 +874,19 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
         return index;
     }
 
+    /**
+     * Método para informar al usuario sobre el incumplimiento de las reglas de
+     * negocio
+     */
+    private void mensajeReglasNegocio() {
+        String texto = "Error en Reglas de Negocio.\n"
+                + "Los datos ingresados con cumplen con una o mas de las siguientes Reglas de Negocio:\n"
+                + "1.- El código del Empleado desde ser mayor a 0 y menor o igual a 100.\n"
+                + "2.- El RUT del Empleado no debe estar en blanco.\n"
+                + "3.- El nombre del Empleado no debe estar en blanco.\n"
+                + "4.- El apellido del Empleado no debe estar en blanco.\n"
+                + "5.- El número del celular debe contener 9 dígitos consecutivos.\n"
+                + "6.- El sueldo bruto debe ser mayor o igual a $120.000 (sin signos ni puntuaciones).\n";
+        JOptionPane.showMessageDialog(null, texto);
+    }
 }

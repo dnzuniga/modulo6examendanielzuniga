@@ -241,9 +241,18 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
                 vistaDatos.txtCodigo.grabFocus();
             }
         });
+//        se implementa esta opción del menú para cumplir con la consulta número
+//        2 del exámen 
         this.vistaPrincipal.mnuConsultasConsulta2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 JOptionPane.showMessageDialog(null, registro.empleadosRedes());
+            }
+        });
+//        se implementa esta opción del menú para cumplir con la consulta número
+//        3 del exámen 
+        this.vistaPrincipal.mnuConsultasConsulta3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                JOptionPane.showMessageDialog(null, registro.eliminaEmpleadosPorSueldo(120000));
             }
         });
 

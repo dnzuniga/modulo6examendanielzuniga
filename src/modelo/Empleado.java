@@ -56,7 +56,7 @@ public class Empleado {
     }
 
     public boolean setRut(String rut) {
-        if (rut.charAt(0) != ' ' && rut.length() > 0) {
+        if (!rut.equalsIgnoreCase(" ") && rut.length() > 0) {
             this.rut = rut;
             return true;
         } else {
@@ -69,7 +69,7 @@ public class Empleado {
     }
 
     public boolean setNombre(String nombre) {
-        if (nombre.charAt(0) != ' ' && nombre.length() > 0) {
+        if (!nombre.equalsIgnoreCase(" ") && nombre.length() > 0) {
             this.nombre = nombre;
             return true;
         } else {
@@ -82,7 +82,7 @@ public class Empleado {
     }
 
     public boolean setApellido(String apellido) {
-        if (apellido.charAt(0) != ' ' &&  apellido.length() > 0) {
+        if (!apellido.equalsIgnoreCase(" ") &&  apellido.length() > 0) {
             this.apellido = apellido;
             return true;
         } else {

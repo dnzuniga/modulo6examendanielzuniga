@@ -343,4 +343,47 @@ public class Registro extends Conexion {
         }
         return texto;
     }
+
+    /**
+     * Método que resuelve la consulta número 3 del exámen
+     *
+     * @return retorna el detalle de los empleados eliminados
+     *
+     */
+    public String eliminaEmpleadosPorSueldo(int sueldoBruto) {
+        String texto = "LISTA DE EMPLEADOS ELIMINADOS:\n";
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
+                + "EST_CIVIL AS \"ESTADO_CIVIL\"\n"
+                + "FROM EMPLEADOS\n"
+                + "WHERE SUELDO_BRUTO=" + sueldoBruto + " ";
+        try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            ResultSet res = pstm.executeQuery();
+            int cont = 1;
+            while (res.next()) {
+                texto += "Empleado número " + cont + ".--- ";
+                texto += "Código: " + res.getString("codigo") + " -- ";
+                texto += "RUT: " + res.getString("rut") + " - ";
+                texto += "Nombre: " + res.getString("nombre") + " -- ";
+                texto += "Apellido: " + res.getString("apellido") + " -- ";
+                texto += "Celular: " + res.getString("celular") + " -- ";
+                texto += "eMail: " + res.getString("email") + " -- ";
+                texto += "Sueldo Bruto: " + res.getString("SUELDO_BRUTO") + " -- ";
+                texto += "Estado Civil: " + res.getString("ESTADO_CIVIL") + "\n";
+                cont++;
+            }
+            res.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        query = "DELETE EMPLEADOS WHERE SUELDO_BRUTO=" + sueldoBruto;
+        try {
+            PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            ResultSet res = pstm.executeQuery();
+            res.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return texto;
+    }
 }

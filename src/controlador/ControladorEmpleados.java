@@ -64,7 +64,7 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
 //        controla la opción del menú que termina el programa
         this.vistaPrincipal.mnuArchivoSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                System.exit(1);
+                System.exit(0);
             }
         });
 //        controla la opcion del menú que desplega la vista para agregar empleados
@@ -318,7 +318,6 @@ public class ControladorEmpleados implements ActionListener, MouseListener {
      * @param e corresponde al objeto relacionado con el evento ocurrido
      */
     @Override
-
     public void actionPerformed(ActionEvent e) {
 //      implementa el código que se ejecuta con motivo de la presión de un botón 
         switch (e.getActionCommand()) {

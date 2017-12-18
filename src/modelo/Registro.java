@@ -308,7 +308,8 @@ public class Registro extends Conexion {
      */
     public String empleadosRedes() {
         String texto = "LISTA DE EMPLEADOS DEL DEPARTAMENTO DE REDES:\n";
-        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL,"
+                + "CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
                 + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
                 + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
                 + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"
@@ -348,7 +349,8 @@ public class Registro extends Conexion {
      */
     public String eliminaEmpleadosPorSueldo(int sueldoBruto) {
         String texto = "LISTA DE EMPLEADOS ELIMINADOS:\n";
-        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, "
+                + "CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_BRUTO\", \n"
                 + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO') \n"
                 + "WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO') \n"
                 + "WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') \n"
@@ -397,10 +399,13 @@ public class Registro extends Conexion {
      */
     public String modificaSueldos(double porcentaje) {
         String texto = "LISTA DE MODIFICACIONES DE SUELDOS DE LOS EMPLEADOS:\n";
-        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL, CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_ANTERIOR\", CONCAT('$',SUELDO_BRUTO*1.1) AS \"SUELDO_MODIFICADO\", \n"
+        String query = "SELECT CODIGO , RUT, NOMBRE, APELLIDO, CELULAR, EMAIL,"
+                + " CONCAT('$',SUELDO_BRUTO) AS \"SUELDO_ANTERIOR\", CONCAT('$',"
+                + "SUELDO_BRUTO*"+(1+porcentaje)+") AS \"SUELDO_MODIFICADO\", \n"
                 + "CASE WHEN EST_CIVIL='C' THEN REPLACE (EST_CIVIL,'C', 'CASADO')\n"
                 + "    WHEN EST_CIVIL='S' THEN REPLACE (EST_CIVIL,'S', 'SOLTERO')\n"
-                + "     WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO') END AS \"ESTADO_CIVIL\"\n"
+                + "     WHEN EST_CIVIL='V' THEN REPLACE (EST_CIVIL,'V', 'VIUDO')"
+                + " END AS \"ESTADO_CIVIL\"\n"
                 + "                FROM EMPLEADOS";
         try {
             PreparedStatement pstm = this.getConexion().prepareStatement(query);
